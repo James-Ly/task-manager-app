@@ -1,16 +1,12 @@
-const express = require('express')
-require('./db/mongoose.js')
-const User = require('./models/users.js')
-const Task = require('./models/tasks.js')
-const userRouter = require('./router/user.js')
-const taskRouter = require('./router/task.js')
-
-const app = express()
+const app = require('./app.js')
 const port = process.env.PORT
 
+app.listen(port, () => {
+    console.log('Server is listening on port ' + port)
+})
 
 /************
- * IMAGE UPLOAD 
+ * IMAGE UPLOAD
  ************/
 // const multer = require('multer')
 // const upload = multer({
@@ -54,9 +50,7 @@ const port = process.env.PORT
 // })
 
 // use middle-ware function to parse the req.body   
-app.use(express.json())
-app.use(userRouter)
-app.use(taskRouter)
+
 
 
 
@@ -68,9 +62,6 @@ app.use(taskRouter)
 
 
 
-app.listen(port, () => {
-    console.log('Server is listening on port ' + port)
-})
 
 /**************
  * BCRYPT HASING EXAMPLE
